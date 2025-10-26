@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+
+        <!-- 模板包关键声明 -->
+        <PackageType>Template</PackageType>
+        <PackageId>PlaylistTools.Template</PackageId>
+        <Version>1.0.0.1</Version>
+        <Authors>lytree</Authors>
+        <Company>YourCompany</Company>
+        <PackageDescription>Hybrid .NET 8 project template for CLI tools and PowerShell modules</PackageDescription>
+        <PackageTags>template;dotnet;cli;powershell</PackageTags>
+        <RepositoryUrl>https://github.com/lytree/PlaylistTools.Template</RepositoryUrl>
+
+        <!-- 构建时包含所有内容 -->
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoBuild>true</NoBuild>
+        <!-- 不需要编译任何源码 -->
+        <NoBuild>true</NoBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="**\*" Exclude="bin\**;obj\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="" />
+        <None Include=".gitignore" Pack="true" PackagePath="" />
+        <None Include=".template.config\**\*" Pack="true" PackagePath="content/" />
+        <None Include="PlaylistTools.Core\**\*" Pack="true" PackagePath="content/PlaylistTools.Core/" />
+        <None Include="PlaylistTools.Cli\**\*" Pack="true" PackagePath="content/PlaylistTools.Cli/" />
+        <None Include="PlaylistTools.PowerShell\**\*" Pack="true" PackagePath="content/PlaylistTools.PowerShell/" />
+    </ItemGroup>
+
+</Project>

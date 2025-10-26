@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/PlaylistTools/">
+    <Project Path="PlaylistTools/PlaylistTools.Cli/PlaylistTools.Cli.csproj" />
+    <Project Path="PlaylistTools/PlaylistTools.Core/PlaylistTools.Core.csproj" />
+    <Project Path="PlaylistTools/PlaylistTools.PowerShell/PlaylistTools.PowerShell.csproj" />
+  </Folder>
+  <Project Path="PlaylistTools.Template.csproj" />
+</Solution>
