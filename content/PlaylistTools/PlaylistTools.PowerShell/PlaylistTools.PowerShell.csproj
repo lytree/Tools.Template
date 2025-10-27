@@ -6,6 +6,8 @@
 		<OutputType>Library</OutputType>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<IsPackable>false</IsPackable>
+		<RootNamespace>PlaylistTools.Powershell</RootNamespace>
+		<AssemblyName>PlaylistTools.Powershell</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\PlaylistTools.Core\PlaylistTools.Core.csproj" />

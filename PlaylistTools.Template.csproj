@@ -5,7 +5,7 @@
         <!-- 模板包关键声明 -->
         <PackageType>Template</PackageType>
         <PackageId>PlaylistTools.Template</PackageId>
-        <Version>1.0.0.1</Version>
+        <Version>1.0.0.2</Version>
         <Authors>lytree</Authors>
         <Company>YourCompany</Company>
         <PackageDescription>Hybrid .NET 8 project template for CLI tools and PowerShell modules</PackageDescription>
@@ -22,15 +22,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="**\*" Exclude="bin\**;obj\**" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="README.md" Pack="true" PackagePath="" />
-        <None Include=".gitignore" Pack="true" PackagePath="" />
-        <None Include=".template.config\**\*" Pack="true" PackagePath="content/" />
-        <None Include="PlaylistTools.Core\**\*" Pack="true" PackagePath="content/PlaylistTools.Core/" />
-        <None Include="PlaylistTools.Cli\**\*" Pack="true" PackagePath="content/PlaylistTools.Cli/" />
-        <None Include="PlaylistTools.PowerShell\**\*" Pack="true" PackagePath="content/PlaylistTools.PowerShell/" />
+        <Content Include="content\**" PackagePath="content" />
+        <!-- LICENSE 和 README -->
+        <Content Include="LICENSE" Pack="true" PackagePath="content/" />
+        <Content Include="README.md" Pack="true" PackagePath="content/" />
+        <!-- postAction 脚本 -->
+        <Content Include="tools/**" Pack="true" PackagePath="tools/" />
     </ItemGroup>
 
 </Project>
