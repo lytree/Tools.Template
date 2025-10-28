@@ -2,7 +2,7 @@
 $moduleRoot = Split-Path -Parent $PSCommandPath
 
 # 动态版本号（可从 psd1 读取）
-$ManifestPath = Join-Path $ModuleRoot "PlaylistTools.PowerShell.psd1"
+$ManifestPath = Join-Path $ModuleRoot "$safeprojectname$.PowerShell.psd1"
 if (Test-Path $ManifestPath) {
     $Manifest = Import-PowerShellDataFile $ManifestPath
     $ModuleVersion = $Manifest.ModuleVersion
@@ -10,7 +10,7 @@ if (Test-Path $ManifestPath) {
 else {
     $ModuleVersion = "0.0.0"
 }
-$CoreDll = Join-Path $ModuleRoot "\$ModuleVersion\PlaylistTools.Core.dll"
+$CoreDll = Join-Path $ModuleRoot "\$ModuleVersion\$safeprojectname$.Core.dll"
 
 if (Test-Path $CoreDll) { Add-Type -Path $CoreDll }
 

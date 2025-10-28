@@ -6,11 +6,11 @@
 		<OutputType>Library</OutputType>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<IsPackable>false</IsPackable>
-		<RootNamespace>PlaylistTools.Powershell</RootNamespace>
-		<AssemblyName>PlaylistTools.Powershell</AssemblyName>
+		<RootNamespace>MyProject.Powershell</RootNamespace>
+		<AssemblyName>MyProject.Powershell</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\PlaylistTools.Core\PlaylistTools.Core.csproj" />
+		<ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" />
 	</ItemGroup>
 	<Target Name="DeleteOutputDll" AfterTargets="Build">
 		<Delete Files="$(OutputPath)$(AssemblyName).dll" />

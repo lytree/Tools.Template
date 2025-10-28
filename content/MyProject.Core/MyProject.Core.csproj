@@ -4,8 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>PlaylistTools.Core</RootNamespace>
-    <AssemblyName>PlaylistTools.Core</AssemblyName>
+    <RootNamespace>MyProject.Core</RootNamespace>
+    <AssemblyName>MyProject.Core</AssemblyName>
   </PropertyGroup>
 
 </Project>

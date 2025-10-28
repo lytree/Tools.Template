@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace PlaylistTools.Core;
+namespace MyProject.Core;
 
-public static class PlaylistService
+public static class MyProjectService
 {
     public static void Generate(string directory, string? outputFile = null, string? extensions = null, bool recursive = true)
     {

@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "lytree",
+    "classifications": [
+        "Tool",
+        "Powershell",
+        "Multi-Project"
+    ],
+    "identity": "PlaylistTools.Template",
+    "name": "Playlist Tools Multi-Project Template",
+    "shortName": "tools",
+    "sourceName": "MyProject",
+    "preferNameDirectory": true,
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "exclude": [
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**/*"
+    ],
+    // ? 关键修复：定义一个符号来驱动 $safeprojectname$ 替换
+    "symbols": {
+    },
+    "primaryOutputs": [
+        {
+            "path": "/src/MyProject.Cli/MyProject.Cli.csproj"
+        },
+        {
+            "path": "/src/MyProject.Core/MyProject.Core.csproj"
+        },
+        {
+            "path": "/src/MyProject.PowerShell/MyProject.PowerShell.csproj"
+        }
+    ]
+}

@@ -8,14 +8,14 @@
     <PackageId>PlaylistTool</PackageId>
     <Authors>lytree</Authors>
     <Description>PlaylistTool - generates playlists (dotnet tool)</Description>
-    <RootNamespace>PlaylistTools.Cli</RootNamespace>
-    <AssemblyName>PlaylistTools.Cli</AssemblyName>
+    <RootNamespace>MyProject.Cli</RootNamespace>
+    <AssemblyName>MyProject.Cli</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.CommandLine" Version="2.0.0-rc.2.25502.107" />
-    <ProjectReference Include="..\PlaylistTools.Core\PlaylistTools.Core.csproj" />
+    <ProjectReference Include="..\MyProject.Core\MyProject.Core.csproj" />
   </ItemGroup>
 
 </Project>

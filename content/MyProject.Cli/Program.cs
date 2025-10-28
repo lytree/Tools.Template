@@ -1,5 +1,5 @@
 using System.CommandLine;
-using PlaylistTool.Cli.Commands;
+using MyProject.Cli.Commands;
 
 var root = new RootCommand("PlaylistTool - versatile playlist generator")
 {

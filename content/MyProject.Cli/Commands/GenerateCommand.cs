@@ -3,9 +3,9 @@ using System;
 using System.CommandLine;
 using System.CommandLine.Parsing;
 using System.IO;
-using PlaylistTools.Core;
+using MyProject.Core;
 
-namespace PlaylistTool.Cli.Commands;
+namespace MyProject.Cli.Commands;
 
 public static class GenerateCommand
 {
