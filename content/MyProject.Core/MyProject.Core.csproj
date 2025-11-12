@@ -7,5 +7,7 @@
     <RootNamespace>MyProject.Core</RootNamespace>
     <AssemblyName>MyProject.Core</AssemblyName>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.53.0" />
+  </ItemGroup>
 </Project>

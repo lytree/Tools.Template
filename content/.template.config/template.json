@@ -20,7 +20,6 @@
         "**/[Oo]bj/**",
         ".template.config/**/*"
     ],
-    // ? 关键修复：定义一个符号来驱动 $safeprojectname$ 替换
     "symbols": {
     },
     "primaryOutputs": [
@@ -29,9 +28,6 @@
         },
         {
             "path": "/src/MyProject.Core/MyProject.Core.csproj"
-        },
-        {
-            "path": "/src/MyProject.PowerShell/MyProject.PowerShell.csproj"
         }
     ]
 }
