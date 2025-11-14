@@ -17,9 +17,19 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [GitHubActions(
     "publish",
     GitHubActionsImage.UbuntuLatest,
-    OnPushBranches = new[] { "main" }, // 当推送到 main 分支时触发
-    InvokedTargets = new[] { nameof(Push) },
-    ImportSecrets = new[] { "NUGET_API_KEY" } // 从 GitHub Secrets 导入 API Key
+
+    // ⬇️ 移除 OnPushBranches 
+
+    // 🚀 新增：只在推送符合 'v*.*.*' 模式的标签时触发
+    OnPushTags = new[] { "v*.*.*", "v*.*.*-*" },
+
+    // 确保使用 GitVersion 完整的历史和标签
+    FetchDepth = 0,
+
+    InvokedTargets = new[] { nameof(Push) }, // 执行 Push 目标
+
+    // 导入 NuGet API Key
+    ImportSecrets = new[] { "NUGET_API_KEY" }
 )]
 partial class Build : NukeBuild
 {
@@ -61,14 +71,14 @@ partial class Build : NukeBuild
         .Produces(ArtifactsDirectory / "*.nupkg")
         .Executes(() =>
         {
-            Log.Information($"Packing project with version {GitVersion.NuGetVersionV2}");
+            Log.Information($"Packing project with version {GitVersion.SemVer}");
 
             DotNetPack(s => s
                 .SetProject(TemplateProjectFile)
                 .EnableNoBuild()
                 .SetOutputDirectory(ArtifactsDirectory)
                 .SetConfiguration(Configuration)
-                .SetVersion(GitVersion.NuGetVersionV2)
+                .SetVersion(GitVersion.SemVer)
             );
         });
 
