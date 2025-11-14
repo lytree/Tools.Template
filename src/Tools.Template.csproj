@@ -4,13 +4,13 @@
 
         <!-- 模板包关键声明 -->
         <PackageType>Template</PackageType>
-        <PackageId>PlaylistTools.Template</PackageId>
+        <PackageId>Tools.Template</PackageId>
         <Version>1.0.0.2</Version>
         <Authors>lytree</Authors>
         <Company>YourCompany</Company>
         <PackageDescription>Hybrid .NET 8 project template for CLI tools and PowerShell modules</PackageDescription>
         <PackageTags>template;dotnet;cli;powershell</PackageTags>
-        <RepositoryUrl>https://github.com/lytree/PlaylistTools.Template</RepositoryUrl>
+        <RepositoryUrl>https://github.com/lytree/Tools.Template</RepositoryUrl>
 
         <!-- 构建时包含所有内容 -->
         <ContentTargetFolders>content</ContentTargetFolders>
@@ -26,8 +26,6 @@
         <!-- LICENSE 和 README -->
         <Content Include="LICENSE" Pack="true" PackagePath="content/" />
         <Content Include="README.md" Pack="true" PackagePath="content/" />
-        <!-- postAction 脚本 -->
-        <Content Include="tools/**" Pack="true" PackagePath="tools/" />
     </ItemGroup>
 
 </Project>

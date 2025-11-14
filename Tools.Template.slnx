@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="PlaylistTools.Template.csproj" />
+  <Folder Name="/build/">
+    <Project Path="build/_build.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Tools.Template.csproj" />
+  </Folder>
 </Solution>
