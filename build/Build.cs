@@ -30,6 +30,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     // 导入 NuGet API Key
     ImportSecrets = new[] { "NUGET_API_KEY" }
 )]
+[DotNetVerbosityMapping]
 partial class Build : NukeBuild
 {
     
