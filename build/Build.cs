@@ -9,7 +9,6 @@ using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities;
 using Serilog;
 
-
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 
@@ -33,6 +32,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 )]
 partial class Build : NukeBuild
 {
+    
     public static int Main() => Execute<Build>(x => x.Pack);
 
     // --- GitVersion & GitRepository 自动注入 ---
