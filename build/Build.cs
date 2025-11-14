@@ -25,6 +25,7 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
     // 确保使用 GitVersion 完整的历史和标签
     FetchDepth = 0,
 
+
     InvokedTargets = new[] { nameof(Push) }, // 执行 Push 目标
 
     // 导入 NuGet API Key
@@ -33,16 +34,13 @@ using static Nuke.Common.Tools.DotNet.DotNetTasks;
 [DotNetVerbosityMapping]
 partial class Build : NukeBuild
 {
-    
+
     public static int Main() => Execute<Build>(x => x.Pack);
 
     // --- GitVersion & GitRepository 自动注入 ---
 
     [GitVersion(NoFetch = true)]
     readonly GitVersion GitVersion; // 仅作为字段/属性定义
-
-    [GitRepository]
-    readonly GitRepository GitRepository;
 
     // --- 核心配置属性 ---
 
@@ -64,7 +62,6 @@ partial class Build : NukeBuild
     Target Clean => _ => _
         .Description("Cleans the artifacts directory.")
         .Executes(() => ArtifactsDirectory.CreateOrCleanDirectory());
-
     Target Pack => _ => _
         .Description("Packs the dotnet template project into a .nupkg file.")
         .DependsOn(Clean)
@@ -77,6 +74,7 @@ partial class Build : NukeBuild
             DotNetPack(s => s
                 .SetProject(TemplateProjectFile)
                 .EnableNoBuild()
+
                 .SetOutputDirectory(ArtifactsDirectory)
                 .SetConfiguration(Configuration)
                 .SetVersion(GitVersion.SemVer)
