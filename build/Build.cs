@@ -11,27 +11,6 @@ using Serilog;
 
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
-
-// 配置 CI/CD 集成，这里以 GitHub Actions 为例
-[GitHubActions(
-    "publish",
-    GitHubActionsImage.UbuntuLatest,
-
-    // ⬇️ 移除 OnPushBranches 
-
-    // 🚀 新增：只在推送符合 'v*.*.*' 模式的标签时触发
-    OnPushTags = new[] { "v*.*.*", "v*.*.*-*" },
-
-    // 确保使用 GitVersion 完整的历史和标签
-    FetchDepth = 0,
-
-
-    InvokedTargets = new[] { nameof(Push) }, // 执行 Push 目标
-
-    // 导入 NuGet API Key
-    ImportSecrets = new[] { "NUGET_API_KEY" }
-)]
-[DotNetVerbosityMapping]
 partial class Build : NukeBuild
 {
 

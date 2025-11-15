@@ -30,6 +30,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: 🛠️ Setup .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+            # ⬇️ 更改这一行以指定 .NET 10
+            # '10.0.x' 会安装 .NET 10 的最新版本
+            dotnet-version: '10.0.x'
       - name: 'Cache: .nuke/temp, ~/.nuget/packages'
         uses: actions/cache@v4
         with:
