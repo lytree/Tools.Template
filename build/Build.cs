@@ -49,11 +49,24 @@ partial class Build : NukeBuild
             DotNetRestore(_ => _
                 .SetProjectFile(TemplateProjectFile));
         });
+
+    Target Compile => _ => _
+.DependsOn(Restore)
+.Executes(() =>
+{
+    // 编译操作会自动处理所有 TargetFrameworks
+    DotNetBuild(s => s
+        .SetProjectFile(TemplateProjectFile)
+        .SetConfiguration(Configuration)
+        .SetVersion(GitVersion.SemVer)
+        .EnableNoRestore()); // 既然 Restore 已经运行，这里可以禁用还原
+});
     Target Pack => _ => _
        .Description("Packs the dotnet template project into a .nupkg file.")
        .DependsOn(Restore)
        .DependsOn(Clean)
-       // 自动注入机制已确保 GitVersion 在此可用
+       .DependsOn(Compile) // 确保 Pack 依赖于 Compile
+                           // 自动注入机制已确保 GitVersion 在此可用
        .Produces(ArtifactsDirectory / "*.nupkg")
        .Executes(() =>
        {
@@ -61,7 +74,7 @@ partial class Build : NukeBuild
 
            DotNetPack(s => s
                .SetProject(TemplateProjectFile)
-               .EnableNoBuild()
+               //    .EnableNoBuild()
 
                .SetOutputDirectory(ArtifactsDirectory)
                .SetConfiguration(Configuration)
