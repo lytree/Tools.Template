@@ -41,24 +41,33 @@ partial class Build : NukeBuild
     Target Clean => _ => _
         .Description("Cleans the artifacts directory.")
         .Executes(() => ArtifactsDirectory.CreateOrCleanDirectory());
-    Target Pack => _ => _
-        .Description("Packs the dotnet template project into a .nupkg file.")
-        .DependsOn(Clean)
-        // 自动注入机制已确保 GitVersion 在此可用
-        .Produces(ArtifactsDirectory / "*.nupkg")
+    // Assuming you have a standard Restore target defined:
+    Target Restore => _ => _
         .Executes(() =>
         {
-            Log.Information($"Packing project with version {GitVersion.SemVer}");
-
-            DotNetPack(s => s
-                .SetProject(TemplateProjectFile)
-                .EnableNoBuild()
-
-                .SetOutputDirectory(ArtifactsDirectory)
-                .SetConfiguration(Configuration)
-                .SetVersion(GitVersion.SemVer)
-            );
+            // Executes 'dotnet restore' for all solutions/projects
+            DotNetRestore(_ => _
+                .SetProjectFile(TemplateProjectFile));
         });
+    Target Pack => _ => _
+       .Description("Packs the dotnet template project into a .nupkg file.")
+       .DependsOn(Restore)
+       .DependsOn(Clean)
+       // 自动注入机制已确保 GitVersion 在此可用
+       .Produces(ArtifactsDirectory / "*.nupkg")
+       .Executes(() =>
+       {
+           Log.Information($"Packing project with version {GitVersion.SemVer}");
+
+           DotNetPack(s => s
+               .SetProject(TemplateProjectFile)
+               .EnableNoBuild()
+
+               .SetOutputDirectory(ArtifactsDirectory)
+               .SetConfiguration(Configuration)
+               .SetVersion(GitVersion.SemVer)
+           );
+       });
 
     Target Push => _ => _
         .DependsOn(Pack)
