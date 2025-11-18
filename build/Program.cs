@@ -40,7 +40,7 @@ public class BuildContext : FrostingContext
         : base(context)
     {
         HasVersion = context.Arguments.HasArgument("Version");
-        NuGetApiKey = context.Arguments.GetArgument(BuildParameters.NuGetApiKey);
+        NuGetApiKey = context.Environment.GetEnvironmentVariable(BuildParameters.NuGetApiKey);
         NugetSource = context.Arguments.HasArgument(nameof(BuildParameters.NugetSource)) ? BuildParameters.NugetSource : context.Arguments.GetArgument(nameof(BuildParameters.NugetSource));
 
     }

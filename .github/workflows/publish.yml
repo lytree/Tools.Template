@@ -23,7 +23,7 @@ jobs:
             - name: 🛠️ Install GitVersion
               run: dotnet tool install --global GitVersion.Tool
             - name: "Run: Push"
-              run: sh ./build.sh -t Push
+              run: sh ./build.sh -t Push 
               env:
                   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
             - name: "Publish: package"
