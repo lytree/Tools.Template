@@ -1,38 +1,33 @@
 name: publish
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
-      - 'v*.*.*-*'
+    push:
+        tags:
+            - "v*.*.*"
+            - "v*.*.*-*"
 
 jobs:
-  ubuntu-latest:
-    name: ubuntu-latest
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: 🛠️ Setup .NET 10 SDK
-        uses: actions/setup-dotnet@v4
-        with:
-            # ⬇️ 更改这一行以指定 .NET 10
-            # '10.0.x' 会安装 .NET 10 的最新版本
-            dotnet-version: '10.0.x'
-      - name: 'Cache: .nuke/temp, ~/.nuget/packages'
-        uses: actions/cache@v4
-        with:
-          path: |
-            .nuke/temp
-            ~/.nuget/packages
-          key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj', '**/Directory.Packages.props') }}
-      - name: 'Run: Push'
-        run: ./build.cmd Push
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      - name: 'Publish: package'
-        uses: actions/upload-artifact@v4
-        with:
-          name: package
-          path: package
+    ubuntu-latest:
+        name: ubuntu-latest
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: 🛠️ Setup .NET 10 SDK
+              uses: actions/setup-dotnet@v4
+              with:
+                  # ⬇️ 更改这一行以指定 .NET 10
+                  # '10.0.x' 会安装 .NET 10 的最新版本
+                  dotnet-version: "10.0.x"
+            - name: 🛠️ Install GitVersion
+              run: dotnet tool install --global GitVersion.Tool
+            - name: "Run: Push"
+              run: sh ./build.sh -t Push
+              env:
+                  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+            - name: "Publish: package"
+              uses: actions/upload-artifact@v4
+              with:
+                  name: package
+                  path: package

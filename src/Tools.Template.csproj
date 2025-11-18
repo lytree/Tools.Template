@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net8.0;net10.0;.NETStandard2.0</TargetFrameworks>
 
         <!-- 模板包关键声明 -->
         <PackageType>Template</PackageType>
@@ -16,7 +16,6 @@
         <ContentTargetFolders>content</ContentTargetFolders>
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
-        <NoBuild>true</NoBuild>
         <!-- 不需要编译任何源码 -->
         <NoBuild>true</NoBuild>
     </PropertyGroup>

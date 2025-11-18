@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/build/">
-    <Project Path="build/_build.csproj" />
+    <Project Path="build/Build.csproj" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Tools.Template.csproj" />
