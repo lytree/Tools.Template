@@ -10,6 +10,8 @@ using Cake.Common.Tools.DotNet.Build;
 using Cake.Common.Tools.DotNet.Pack;
 using Cake.Common.Tools.GitVersion;
 using Cake.Common.Tools.DotNet.NuGet.Push;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 public static class Program
 {
     public static int Main(string[] args)
@@ -106,7 +108,7 @@ public class PackTask : FrostingTask<BuildContext>
 
         var projectFiles = context.GetFiles(BuildParameters.ProjectPath);
 
-        context.Information($"Found {projectFiles.Count} project(s) matching 'Tools.Template.csproj':");
+        context.Information($"Found {projectFiles.Count} project(s) matching 'Tools.Template.csproj': version {JsonSerializer.Serialize(version)}");
         foreach (var projectPath in projectFiles)
         {
 
@@ -117,7 +119,7 @@ public class PackTask : FrostingTask<BuildContext>
                 NoBuild = true, // 已经在 Compile Task 中完成
                 NoRestore = true,
                 ArgumentCustomization = args => args
-                .Append($"-property:PackageVersion={(context.HasVersion ? context.Arguments.GetArgument(BuildParameters.Version) : version.FullSemVer)}")
+                .Append($"-property:PackageVersion={(context.HasVersion ? context.Arguments.GetArgument(BuildParameters.Version) : version.AssemblySemVer)}")
             });
         }
     }
